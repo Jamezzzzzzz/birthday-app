@@ -142,4 +142,8 @@ def buy(item_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    # Render provides a $PORT environment variable. This line grabs it.
+    port = int(os.environ.get("PORT", 5000))
+    # host='0.0.0.0' tells the app to be available to the public internet
+    app.run(host='0.0.0.0', port=port)
