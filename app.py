@@ -16,7 +16,7 @@ MESSAGES = [
 PRIZES = {
     'letter1': {'name': '卡通都是騙人的', 'price': 100, 'content': 'ㄟ~~~ 是卡 片'},
     'mysterybox1': {'name': '你頭上有海報', 'price': 150, 'content': '鴨子瓜瓜'},
-    'picture': {'name': '你的美照', 'price': 50, 'content': '我好愛這張'},
+    'candy': {'name': '一周年禮物', 'price': 50, 'content': '呂紹群這個很胖欸!'},
     'mysterybox2': {'name': '米老鼠手提袋', 'price': 150, 'content': '米三米吃提拉米蘇'},
     'mysterybox3': {'name': '金雨好煩', 'price': 50, 'content': '手殘可用'}
 
