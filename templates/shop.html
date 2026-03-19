@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body style="text-align: center; font-family: sans-serif; background-color: #fff1f2; padding: 50px;">
+
+    <h1 style="color: #be185d;">✨ 生日超商 今日店員:呂鳳梨 ✨</h1>
+    <div style="background: white; display: inline-block; padding: 10px 20px; border-radius: 50px; border: 2px solid #f472b6; margin-bottom: 30px;">
+        <span style="font-size: 1.5rem;">💰 錢包: <strong>${{ session['money'] }}</strong></span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; padding: 0 20px; max-width: 1200px; margin: 0 auto;">
+        {% for id, details in prizes.items() %}
+        <div style="background: white; border: 2px solid #f472b6; border-radius: 20px; padding: 15px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; justify-content: space-between;">
+            
+            <h3 style="color: #9d174d; margin-top: 0; font-size: 1.1rem;">{{ details.name }}</h3>
+
+            {% if id in session['purchased_items'] %}
+                <div style="background: #fdf2f8; padding: 10px; border-radius: 10px; border: 1px dashed #f472b6; flex-grow: 1;">
+                    <p style="font-size: 0.9rem; color: #333; line-height: 1.4;">{{ details.content }}</p>
+                    <span style="color: #059669; font-weight: bold; font-size: 0.8rem;">Unlocked! ✅</span>
+                </div>
+            {% else %}
+                <p style="font-size: 1rem; color: #666; margin: 10px 0;">Price: ${{ details.price }}</p>
+                
+                {% if session['money'] >= details.price %}
+                    <a href="{{ url_for('buy', item_id=id) }}" style="text-decoration: none;">
+                        <button style="background: #ec4899; color: white; border: none; padding: 10px; border-radius: 10px; font-weight: bold; cursor: pointer; width: 100%;">
+                            買爆
+                        </button>
+                    </a>
+                {% else %}
+                    <button disabled style="background: #e5e7eb; color: #9ca3af; border: none; padding: 10px; border-radius: 10px; width: 100%;">
+                        錢不夠
+                    </button>
+                {% endif %}
+            {% endif %}
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <div style="margin-top: 50px;">
+        <a href="/" style="color: #db2777; text-decoration: none; font-weight: bold;">← Back to Start</a>
+    </div>
+
+</body>
+</html>
