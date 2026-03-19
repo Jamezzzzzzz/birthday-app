@@ -24,9 +24,14 @@ PRIZES = {
 
 def reset_game():
     session['money'] = 0
+    session['purchased_items'] = []
+    # Add this so the 'if' statement in index() becomes False next time
+    session['game_started'] = True 
+
 @app.route('/')
 def index():
-    if 'lives' not in session:
+    # Only reset if the game hasn't been initialized yet
+    if 'game_started' not in session:
         reset_game()
     return render_template('index.html')
 
